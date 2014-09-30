@@ -1,0 +1,4 @@
+.main
+  %h1= @user.name || "Hi"
+  %h2= @user.email
+  %p= link_to "Edit", edit_user_path(current_user)

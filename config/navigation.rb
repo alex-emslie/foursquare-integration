@@ -53,19 +53,16 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>.
     #
-    primary.item :key_1, 'name', "#"
+    primary.item :key_1, 'Log In', new_user_session_path, { if: Proc.new { !user_signed_in? } }
 
     # Add an item which has a sub navigation (same params, but with block)
-    primary.item :key_2, 'name', "#" do |sub_nav|
-      # Add an item to the sub navigation (same params again)
-      sub_nav.item :key_2_1, 'name', "#"
-    end
+    primary.item :key_2, 'Register', new_user_registration_path, { if: Proc.new { !user_signed_in? } }
+
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
     # thus you can use all the methods and vars you have available in the views.
-    primary.item :key_3, 'Admin', "#", class: 'special'
-    primary.item :key_4, 'Account', "#"
+    primary.item :key_3, 'Account', edit_user_path(current_user), { if: Proc.new { user_signed_in? } }
 
     # you can also specify html attributes to attach to this particular level
     # works for all levels of the menu
