@@ -1,0 +1,12 @@
+.main
+  %h1 Edit your profile
+
+  = form_for @user, :action => :update do |f|
+    .block
+      = f.label :name, "Name"
+      = f.text_field :name
+    .block
+      = f.label :email, "Email"
+      = f.text_field :email
+    %menu.submit
+      = f.button :Submit
