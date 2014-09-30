@@ -1,5 +1,22 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+
+  protect_from_forgery
+
+  helper_method :current_user
+
+  private
+
+    def require_user
+      unless current_user
+        redirect_to root_path
+      end
+    end
+  
+    def foursquare
+      unless current_user
+        @foursquare ||= Foursquare::Base.new(Settings.app_id, Settings.app_secret)
+      else
+        @foursquare ||= Foursquare::Base.new(session[:access_token])
+      end
+    end
 end
