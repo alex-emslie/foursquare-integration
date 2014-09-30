@@ -187,6 +187,8 @@ GEM
     shoulda-context (1.2.1)
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
+    simple-navigation (3.13.0)
+      activesupport (>= 2.3.2)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -257,6 +259,7 @@ DEPENDENCIES
   resque_spec
   sass-rails (~> 4.0.3)
   shoulda
+  simple-navigation
   sqlite3
   therubyracer
   thin
