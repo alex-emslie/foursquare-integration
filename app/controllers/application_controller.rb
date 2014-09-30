@@ -11,12 +11,9 @@ class ApplicationController < ActionController::Base
         redirect_to root_path
       end
     end
-  
+
     def foursquare
-      unless current_user
-        @foursquare ||= Foursquare::Base.new(Settings.app_id, Settings.app_secret)
-      else
-        @foursquare ||= Foursquare::Base.new(session[:access_token])
-      end
+        @foursquare ||= Foursquare::Base.new(ENV["FS_APP_ID"], ENV["FS_APP_SECRET"])
     end
+
 end
