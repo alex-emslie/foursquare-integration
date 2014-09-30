@@ -1,12 +1,12 @@
 class UserController < ApplicationController
   def show
     @user = User.find(params[:id])
-    raise ActionController::RoutingError.new('Not Found') if @user.id != current_user.id
+    check_identity(@user)
   end
 
   def edit
     @user = User.find(params[:id])
-    raise ActionController::RoutingError.new('Not Found') if @user.id != current_user.id
+    check_identity(@user)
   end
 
   def update
@@ -24,5 +24,9 @@ class UserController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email)
+  end
+
+  def check_identity(user)
+    raise ActionController::RoutingError.new('Not Found') if user.id != current_user.id
   end
 end
