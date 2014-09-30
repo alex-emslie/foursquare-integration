@@ -25,7 +25,7 @@ test:
   <<: *default
   adapter: postgresql
   encoding: unicode
-  database: all_you_can_meet
+  database: all_you_can_meet_test
   pool: 5
   username:
   password:
