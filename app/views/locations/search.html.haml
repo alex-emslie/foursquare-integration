@@ -2,16 +2,17 @@
 -#   = input_tag(:query)
 -#   = submit_tag("Search")
 
-.map-hero
-  #map
-.suggestions
-  .list-group
-    - JSON.parse(@results).each do |venue|
-      .list-group-item
-        .name= venue['name']
-        .phone= venue['contact']['formattedPhone']
-        .address= venue['location']['formattedAddress'][0]
-        .city= venue['location']['formattedAddress'][1]
+.row
+  .map-hero.col-md-6
+    #map
+  .suggestions.col-md-6
+    .list-group
+      - JSON.parse(@results).each do |venue|
+        .list-group-item
+          .name= venue['name']
+          .phone= venue['contact']['formattedPhone']
+          .address= venue['location']['formattedAddress'][0]
+          .city= venue['location']['formattedAddress'][1]
 
 :javascript
   var venues = $.parseJSON("#{j @results}")
