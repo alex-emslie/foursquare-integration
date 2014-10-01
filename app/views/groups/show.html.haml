@@ -7,13 +7,19 @@
     %li
       = link_to user.name? ? user.name : user.email, user_path(user)
 
-  %h2 Suggested places
-
-  %h2 Invite users to this group
-  = form_tag( controller: "user", action: "add_user_to_group" ) do
-    = label_tag(:user_email, "Email to invite")
-    = text_field_tag(:user_email)
-    = hidden_field_tag(:group_id, @group.id)
-    = submit_tag("Invite")
+  .row
+      %h2 Suggested places
+        .col-md-4
+            %ul
+        .col-md-8
+            .map-hero
+                #map
+  .row
+      %h2 Invite users to this group
+      = form_tag( controller: "user", action: "add_user_to_group" ) do
+        = label_tag(:user_email, "Email to invite")
+        = text_field_tag(:user_email)
+        = hidden_field_tag(:group_id, @group.id)
+        = submit_tag("Invite")
 
   = link_to "Edit this group", edit_group_path(@group)
