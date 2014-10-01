@@ -3,7 +3,7 @@ class UserController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    check_for_association(@user) unless @user == current_user
+    check_for_association(@user) if current_user.id != @user.id
   end
 
   def edit

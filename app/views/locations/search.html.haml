@@ -1,0 +1,10 @@
+-# = form_tag( controller: "locations", action: "search" ) do
+-#   = input_tag(:query)
+-#   = submit_tag("Search")
+
+.map-hero
+  #map
+.suggestions
+
+:javascript
+  var venues = $.parseJSON("#{j @results}")
