@@ -7,6 +7,9 @@
     %li
       = link_to user.name? ? user.name : user.email, user_path(user)
 
+  %h2 Suggested places
+  %ul
+
   %h2 Invite users to this group
   = form_tag( controller: "user", action: "add_user_to_group" ) do
     = label_tag(:user_email, "Email to invite")
