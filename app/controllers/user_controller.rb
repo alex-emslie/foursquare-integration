@@ -30,7 +30,7 @@ class UserController < ApplicationController
 
     if existing_user
       action = "added"
-      existing_user.groups << group_to_add
+      existing_user.groups << group_to_add unless existing_user.groups.include?(group_to_add)
     else
       action = "invited"
       User.invite!(email: user_to_invite, invited_group_id: group_to_add.id)
