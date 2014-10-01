@@ -1,4 +1,12 @@
-%h1= "hello #{user_signed_in? ? current_user.email : 'world'}"
+.row
+  .col-md-8
+    %h1= "hello #{user_signed_in? ? current_user.email : 'world'}"
 
-.map-hero
-  #map
+    .map-hero
+      #map
+  .col-md-4
+    - if user_signed_in?
+      %h4 My Groups
+      %ul
+        - current_user.groups.each do |group|
+          %li= link_to group.name, group_path(group)

@@ -1,6 +1,6 @@
 class UserController < ApplicationController
   before_action :authenticate_user!
-  
+
   def show
     @user = User.find(params[:id])
     check_identity(@user)
@@ -20,6 +20,24 @@ class UserController < ApplicationController
     end
 
     redirect_to user_path(current_user)
+  end
+
+  def add_user_to_group
+    user_to_invite = params[:user_email]
+    group_to_add = Group.find(params[:group_id])
+
+    existing_user = User.find_by email: user_to_invite
+
+    if existing_user
+      action = "added"
+      existing_user.groups << group_to_add
+    else
+      action = "invited"
+      User.invite!(email: user_to_invite, invited_group_id: group_to_add.id)
+    end
+
+    flash[:notice] = "The user was #{action} successfully."
+    redirect_to group_path(group_to_add)
   end
 
   private

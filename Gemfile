@@ -5,6 +5,7 @@ gem 'rails', '4.1.6'
 gem 'unicorn' # server
 gem 'pg'
 gem "devise" # user auth flow
+gem 'devise_invitable'
 gem 'acts_as_taggable_on'
 gem "figaro"
 gem 'haml-rails' # makes rails create haml in generators, etc.

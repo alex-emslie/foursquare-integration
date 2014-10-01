@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-    devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+    devise_for :users, :controllers => { :invitations => 'users/invitations' }, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
   resources :user, :groups
+
+  post 'users/add_user_to_group' => 'user#add_user_to_group', as: :add_user
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -1,2 +1,25 @@
-%nav.main_nav
-  = render_navigation :expand_all => true
+%nav.main_nav.navbar.navbar-default{ :role => "navigation" }
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{ :data => { :toggle => "collapse", :target => "#main_nav" } }
+        %span.sr-only Toggle Navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to "All You Can Meet", root_path, :class => "navbar-brand"
+
+    #main_nav.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        = render_navigation :expand_all => true
+      - if user_signed_in?
+        %ul.nav.navbar-nav.navbar-right.user_nav
+          %li.dropdown
+            %a.dropdown-toggle{ :href => "#", :data => { :toggle => "dropdown" } }
+              My Groups
+              %span.caret
+            %ul.group-list
+              - current_user.groups.each do |group|
+                %li
+                  = link_to group.name, group_path(group)
+          %li= link_to current_user.friendly_title, user_path(current_user)
+          %li= link_to "Log out", destroy_user_session_path(current_user), :method => :destroy
