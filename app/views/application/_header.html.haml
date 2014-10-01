@@ -1,3 +1,12 @@
 %header
   = link_to "All You Can Meet", root_path, class: "logo"
   = render 'navigation'
+  - if user_signed_in?
+    %ul.user_nav
+      %li= current_user.friendly_title
+      %li
+        My Groups
+        %ul.group-list
+          - current_user.groups.each do |group|
+            %li
+              = link_to group.name, group_path(group)

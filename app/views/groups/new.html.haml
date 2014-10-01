@@ -1,0 +1,16 @@
+.main
+  %h1 Create a new group
+
+  = form_for @group, :action => :create do |f|
+    .block
+      = f.label :name, "Name"
+      = f.text_field :name
+    .block
+      = f.label :description, "Description"
+      = f.text_field :description
+    .block
+      = f.label :picture, "Picture"
+      = f.text_field :picture
+
+    %menu.submit
+      = f.button :Submit

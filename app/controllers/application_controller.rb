@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  protect_from_forgery
+  protect_from_forgery with: :exception
 
   helper_method :current_user
 
@@ -21,4 +21,5 @@ class ApplicationController < ActionController::Base
           @client ||= Foursquare2::Client.new(ENV["FS_APP_ID"], ENV["FS_APP_SECRET"])
       end
     end
+
 end

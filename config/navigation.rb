@@ -23,5 +23,6 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :register, 'Register', new_user_registration_path, { unless: Proc.new { user_signed_in? } }
     primary.item :logout, 'Log Out', destroy_user_session_path(current_user), { if: Proc.new { user_signed_in? }, method: :delete }
     primary.item :account, 'Account', Proc.new { edit_user_path(current_user) }, { if: Proc.new { user_signed_in? } }
+    primary.item :new_group, 'New Group', new_group_path, { if: Proc.new { user_signed_in? } } 
   end
 end

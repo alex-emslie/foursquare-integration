@@ -1,0 +1,10 @@
+.main
+  %h1= @group.name
+  %p= @group.description
+  %h2 Users
+  %ul
+  - @group.users.each do |user|
+    %li
+      = link_to user.name? ? user.name : user.email, user_path(user)
+  = link_to "Edit this group", edit_group_path(@group)
+    
