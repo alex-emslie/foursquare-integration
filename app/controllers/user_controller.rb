@@ -40,6 +40,13 @@ class UserController < ApplicationController
     redirect_to group_path(group_to_add)
   end
 
+  def leave_group
+    group_to_leave = params[:group_id]
+    current_user.groups.delete(group_to_leave)
+    flash[:notice] = "successfully left group"
+    redirect_to user_path(current_user)
+  end
+  
   private
 
   def user_params

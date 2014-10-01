@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :user, :groups
 
   post 'users/add_user_to_group' => 'user#add_user_to_group', as: :add_user
+  get 'users/leave/:group_id' => 'user#leave_group', as: :leave_group
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
