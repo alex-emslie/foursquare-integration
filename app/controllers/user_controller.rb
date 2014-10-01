@@ -8,6 +8,7 @@ class UserController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @grouped_options = interest_categories
     check_identity(@user)
   end
 
@@ -64,5 +65,35 @@ class UserController < ApplicationController
     end
 
     raise ActionController::RoutingError.new('Not Found') unless possible_associations.flatten!.include?(current_user.id)
+  end
+
+  def interest_categories
+    {
+      "Food" => [
+        ["Indian", "indian"],
+        ["Chinese", "chinese"],
+        ["Japanese", "japanese"],
+        ["Mexican", "mexican"],
+        ["Italian", "italian"],
+        ["Pub", "pub"]
+      ],
+      "Drink" => [
+        ["Coffee", "coffee"],
+        ["Smoothie", "smoothie"],
+        ["After work beer", "beer"],
+        ["After work cocktail", "cocktail"],
+        ["Bubble tea", "bubble tea"]
+      ],
+      "Hobby" => [
+        ["Surfing", "surfing"],
+        ["Basketball", "bball"],
+        ["Running", "running"],
+        ["Opera", "opera"],
+        ["Biking", "biking"],
+        ["Homebrewing", "homebrew"],
+        ["Rock climbing", "climbing"],
+        ["Hiking", "hiking"]
+      ]
+    }
   end
 end
