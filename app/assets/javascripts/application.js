@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap.min
 //= require_tree .
+
 
 L.mapbox.accessToken = 'pk.eyJ1IjoiYWxleGVtc2xpZSIsImEiOiJLdjVSNFdBIn0.S95Ij0SopDQ_HjrDTb5KxQ';
 map = L.mapbox.map('map', 'alexemslie.jl5lobkp').setView([37.792808, -122.402047], 15);

@@ -10,14 +10,18 @@
 
     #main_nav.collapse.navbar-collapse
       %ul.nav.navbar-nav
-        = render_navigation :expand_all => true
+        - unless user_signed_in?
+          %li= link_to "Log In", new_user_session_path
+          %li= link_to "Register", new_user_registration_path
+        - if user_signed_in?
+          %li= link_to "New Group", new_group_path
       - if user_signed_in?
         %ul.nav.navbar-nav.navbar-right.user_nav
           %li.dropdown
             %a.dropdown-toggle{ :href => "#", :data => { :toggle => "dropdown" } }
               My Groups
               %span.caret
-            %ul.group-list
+            %ul.group-list.dropdown-menu
               - current_user.groups.each do |group|
                 %li
                   = link_to group.name, group_path(group)
