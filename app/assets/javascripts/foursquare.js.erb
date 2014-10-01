@@ -31,7 +31,7 @@
 
 $(document).ready(function(){
 
-    if(venues.length){
+    if(typeof(venues) != 'undefined' && venues.length){
       L.mapbox.accessToken = 'pk.eyJ1IjoiYWxleGVtc2xpZSIsImEiOiJLdjVSNFdBIn0.S95Ij0SopDQ_HjrDTb5KxQ';
       map = L.mapbox.map('map', 'alexemslie.jl5lobkp').setView([37.792808, -122.402047], 15);
       var foursquarePlaces = L.layerGroup().addTo(map);
