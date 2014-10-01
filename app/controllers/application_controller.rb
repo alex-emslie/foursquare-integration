@@ -12,8 +12,13 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def foursquare
-        @foursquare ||= Foursquare::Base.new(ENV["FS_APP_ID"], ENV["FS_APP_SECRET"])
-    end
+    def Foursquare
+      def self.search_venues(text)
+          client.search_venues(:ll => '36.142064,-86.816086', :query => text)
+      end
 
+      def self.client
+          @client ||= Foursquare2::Client.new(ENV["FS_APP_ID"], ENV["FS_APP_SECRET"])
+      end
+    end
 end
