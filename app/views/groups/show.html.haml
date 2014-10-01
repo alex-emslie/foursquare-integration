@@ -8,7 +8,17 @@
       = link_to user.name? ? user.name : user.email, user_path(user)
 
   %h2 Suggested places
-  %ul
+  .row
+    .col-md-4
+        %ul
+            %li Place
+            %li Place
+            %li Place
+            %li Place
+            %li Place
+    .col-md-8
+        .map-hero
+          #map
 
   %h2 Invite users to this group
   = form_tag( controller: "user", action: "add_user_to_group" ) do
