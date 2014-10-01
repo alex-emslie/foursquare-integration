@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
   resources :user, :groups
+  
 
   post 'users/add_user_to_group' => 'user#add_user_to_group', as: :add_user
   get 'users/leave/:group_id' => 'user#leave_group', as: :leave_group
+
+  get 'locations/search' => 'locations#search', as: :foursquare_query
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
