@@ -11,6 +11,9 @@ gem 'haml-rails' # makes rails create haml in generators, etc.
 gem 'redcarpet'
 gem 'jquery-rails'
 gem 'simple-navigation'
+gem 'faraday', '~> 0.8'
+gem 'faraday_middleware', '>= 0.8'
+gem 'hashie', '>= 1.0', '< 3.0.0'
 group :development do
   gem 'thin' # Use thin as the webserver in dev to suppress those stupid "cannot determine content-length" errors
   gem "quiet_assets", ">= 1.0.1"  # don't tell me about assets being served in the logs

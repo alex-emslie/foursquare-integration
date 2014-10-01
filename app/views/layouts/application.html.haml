@@ -3,10 +3,13 @@
   %head
   %title All You Can Meet
   = stylesheet_link_tag    'application', media: 'all'
+  = stylesheet_link_tag 'https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css'
+  = javascript_include_tag 'https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'
   = csrf_meta_tags
 
 %body
-  = render 'header'
-  = yield
-  = render 'footer'
+  .container
+    = render 'header'
+    = yield
+    = render 'footer'
   = javascript_include_tag 'application'
