@@ -8,5 +8,10 @@
     .block
       = f.label :email, "Email"
       = f.text_field :email
+
+    = f.fields_for :interests do |builder|
+      = render 'interest_fields', f: builder
+      
+    = link_to_add_fields "Add Interest", f, :interests
     %menu.submit
       = f.button :Submit
