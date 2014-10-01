@@ -3,7 +3,7 @@ class UserController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    check_identity(@user)
+    check_for_association(@user)
   end
 
   def edit
@@ -46,7 +46,7 @@ class UserController < ApplicationController
     flash[:notice] = "successfully left group"
     redirect_to user_path(current_user)
   end
-  
+
   private
 
   def user_params
@@ -55,5 +55,14 @@ class UserController < ApplicationController
 
   def check_identity(user)
     raise ActionController::RoutingError.new('Not Found') if user.id != current_user.id
+  end
+
+  def check_for_association(user)
+    possible_associations = []
+    user.groups.each do |group|
+      possible_associations << group.users.pluck('id')
+    end
+
+    raise ActionController::RoutingError.new('Not Found') unless possible_associations.flatten!.include?(current_user.id)
   end
 end
