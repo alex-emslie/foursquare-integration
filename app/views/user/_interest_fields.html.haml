@@ -1,15 +1,12 @@
+- food_options = options_for_select([["Indian", "indian", :class => "food"],["Chinese", "chinese", :class => "food" ], ["Japanese", "japanese", :class => "food" ], ["Mexican", "mexican", :class => "food" ], ["Italian", "italian", :class => "food" ], ["Pub", "pub", :class => "food" ]])
+- drink_options = options_for_select([["Coffee", "coffee", :class => "drink" ], ["Smoothie", "smoothie", :class => "drink" ], ["After work beer", "beer", :class => "drink" ], ["After work cocktail", "cocktail", :class => "drink" ], ["Bubble tea", "bubble tea", :class => "drink" ]])
+- hobby_options = options_for_select([["Surfing", "surfing", :class => "hobby" ], ["Basketball", "bball", :class => "hobby" ], ["Running", "running", :class => "hobby" ], ["Opera", "opera", :class => "hobby" ], ["Biking", "biking", :class => "hobby" ], ["Homebrewing", "homebrew", :class => "hobby" ], ["Rock climbing", "climbing", :class => "hobby" ], ["Hiking", "hiking", :class => "hobby" ]])
 %fieldset
-  = f.label :interest_type, "Type"
-  = f.text_field :interest_type
-  = f.label :details, "Details"
-  = f.text_field :details
+  = f.label(:interest_type, "Type")
+  = f.select(:interest_type, options_for_select([ ["Food", "food"], ["Drink", "drink"], ["Hobby", "hobby"] ]), {}, :class => 'type_select' )
+  = f.label(:details, "Details")
+  = f.select(:details, (food_options + drink_options + hobby_options), {}, :class => 'details_select' )
   = f.label :sentiment, "Sentiment"
   = f.text_field :sentiment
-  = f.check_box :_destroy
-  = f.label :_destroy, "Remove Interest"
-
-
--# t.string :type
--# t.string :details
--# t.integer :sentiment
--# t.integer :user_id
+  = f.hidden_field :_destroy
+  = f.label :_destroy, "Remove Interest", class: "remove_fields"
