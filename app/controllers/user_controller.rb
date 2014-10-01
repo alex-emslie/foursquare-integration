@@ -50,7 +50,7 @@ class UserController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:name, :email, interests_attributes: [:interest_type, :details, :sentiment, :user_id])
   end
 
   def check_identity(user)
