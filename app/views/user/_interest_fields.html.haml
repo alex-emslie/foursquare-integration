@@ -1,8 +1,8 @@
 %fieldset
   = f.label(:interest_type, "Type")
-  = f.select(:interest_type, options_for_select([ ["Food", "food"], ["Drink", "drink"], ["Hobby", "hobby"] ]), {}, :class => 'type_select' )
+  = f.select(:interest_type, options_for_select([ ["Food", "food"], ["Drink", "drink"], ["Hobby", "hobby"] ], :selected => f.object.interest_type), :class => 'type_select' )
   = f.label(:details, "Details")
-  = f.select(:details, grouped_options_for_select(@grouped_options), :class => 'details_select' )
+  = f.select(:details, grouped_options_for_select(@grouped_options, :selected => f.object.details), :class => 'details_select' )
   = f.label :sentiment, "Sentiment"
   = f.text_field :sentiment
   = f.hidden_field :_destroy

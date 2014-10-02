@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :groups, join_table: :groups_users
   has_many :interests
 
-  accepts_nested_attributes_for :interests
+  accepts_nested_attributes_for :interests, allow_destroy: true
 
   default_scope { includes(:groups, :interests) }
 

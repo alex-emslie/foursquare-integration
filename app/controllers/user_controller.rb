@@ -14,6 +14,7 @@ class UserController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @user.interests.delete_all
     if current_user.id != @user.id
       flash[:notice] = "tsk, tsk, tsk"
     else
