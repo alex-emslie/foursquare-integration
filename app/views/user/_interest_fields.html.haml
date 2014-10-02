@@ -1,4 +1,4 @@
-%fieldset
+%fieldset.interests-fieldset
   = f.label(:interest_type, "Type")
   = f.select(:interest_type, options_for_select([ ["Food", "food"], ["Drink", "drink"], ["Hobby", "hobby"] ], :selected => f.object.interest_type), :class => 'type_select' )
   = f.label(:details, "Details")

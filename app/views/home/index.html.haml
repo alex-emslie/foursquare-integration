@@ -2,11 +2,11 @@
   .col-md-8
     %h1= "hello #{user_signed_in? ? current_user.email : 'world'}"
 
-    = form_tag({ controller: "locations", action: "search" }, method: "get", :class => 'form-control') do
-      = text_field_tag(:query)
-      = submit_tag("Search")
+    = form_tag({ controller: "locations", action: "search"}, method: "get") do
+      = text_field_tag(:query, "", :class => "form-control", :style => "width: 33%; display: inline; height: 43px;")
+      = submit_tag("Search", :class => "btn-primary", :style => "display: inline;")
 
-    %button.btn-primary create new event
+    %button.btn-primary.create-event create new event
 
   .col-md-4
     - if user_signed_in?

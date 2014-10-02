@@ -9,10 +9,10 @@
         - if current_user == @user
           = link_to "(leave)", leave_group_path(group)
   %h3 My Interests
-  %ul
+  %ul.interests
     - @user.interests.each do |interest|
       %li
-        %p= interest.interest_type
+        %p.interest-type= interest.interest_type + ':'
         %p= interest.details
         %p= interest.sentiment
   - if current_user == @user
