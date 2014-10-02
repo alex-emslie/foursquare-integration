@@ -2,12 +2,13 @@
   .col-md-8
     %h1= "hello #{user_signed_in? ? current_user.email : 'world'}"
 
-    = form_tag({ controller: "locations", action: "search" }, method: "get", :class => 'form-control') do
+    = form_tag({ controller: "locations", action: "search" }, method: "get") do
       = text_field_tag(:query)
       = submit_tag("Search")
 
-    %button.btn-primary create new event
-
+    .map-hero
+      #map
+      
   .col-md-4
     - if user_signed_in?
       %h4 My Groups
