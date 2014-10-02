@@ -2,9 +2,15 @@
 -#   = input_tag(:query)
 -#   = submit_tag("Search")
 
-.map-hero
+.map-hero.col-md-6
   #map
-.suggestions
+.suggestions.col-md-6
+  %ul
+    - JSON.parse(@results).each do |venue|
+      %li= venue['name']
+      %li= venue['contact']['formattedPhone']
+      %li= venue['location']['formattedAddress'][0]
+      %li= venue['location']['formattedAddress'][1]
 
 :javascript
   var venues = $.parseJSON("#{j @results}")
